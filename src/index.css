@@ -3,6 +3,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     background-color: lightblue;
+    padding-bottom: 30px;
 }
 
 button {
