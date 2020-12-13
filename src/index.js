@@ -2,6 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
+function Button(props) {
+    //You can pass functions to props with 'props.onClick'
+    return (
+        <button className={props.valChange} onClick={props.onClick}>{props.valChange}</button>
+    )
+} 
+
 class Counter extends React.Component {
     constructor (props) {
         super(props)
@@ -25,15 +32,14 @@ class Counter extends React.Component {
         let decrementedNum = numCopy - 1
         this.setState({num: decrementedNum})
     }
-    
+
     render() {
         //functions have to be passed into onClick
         return (
             <div>
                 <div>Current Number: {this.state.num}</div>
-                
-                <button className='increment' onClick={() => this.increment()}>increment</button>
-                <button className='decrement' onClick={() => this.decrement()}>decrement</button>
+                <Button valChange='increment' onClick={() => this.increment()}/>
+                <Button valChange='decrement' onClick={() => this.decrement()}/>
             </div>
         )
     }
