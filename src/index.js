@@ -17,29 +17,31 @@ class Counter extends React.Component {
         }
     }
 
-    increment(num) {
+    increment(amount = 1) {
         console.log("this.state.num: ", this.state.num)
         //You HAVE to create an immutable copy of this.state.num before manipulating it. 
         let numCopy = this.state.num
-        let incrementedNum = numCopy + 1
+        let incrementedNum = numCopy + amount
         this.setState({num: incrementedNum})
     }
 
-    decrement(num) {
+    decrement(amount = 1) {
         console.log("this.state.num: ", this.state.num)
         //You HAVE to create an immutable copy of this.state.num before manipulating it.
         let numCopy = this.state.num
-        let decrementedNum = numCopy - 1
+        let decrementedNum = numCopy - amount
         this.setState({num: decrementedNum})
     }
 
     render() {
-        //functions have to be passed into onClick
+        //functions have to be passed into the onClick prop
         return (
-            <div>
-                <div>Current Number: {this.state.num}</div>
+            <div className='counter'>
+                <div className='display'>Count: {this.state.num}</div>
                 <Button valChange='increment' onClick={() => this.increment()}/>
                 <Button valChange='decrement' onClick={() => this.decrement()}/>
+                <Button valChange='increment by 5' onClick={() => this.increment(5)}/>
+                <Button valChange='decrement by 5' onClick={() => this.decrement(5)}/>
             </div>
         )
     }

@@ -1,0 +1,22 @@
+.counter {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: lightblue;
+}
+
+button {
+    width: 50%;
+}
+
+.display {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+}
+
+#root {
+    display: flex;
+    justify-content: center;
+}
