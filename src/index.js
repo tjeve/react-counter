@@ -34,7 +34,7 @@ class Counter extends React.Component {
     }
 
     render() {
-        //functions have to be passed into the onClick prop
+        //functions have to be passed into the onClick prop. It should look like... onClick={() => this.function()}
         return (
             <div className='counter'>
                 <div className='display'>Count: {this.state.num}</div>
@@ -46,20 +46,40 @@ class Counter extends React.Component {
         )
     }
 }
-
-
   
   class App extends React.Component {
         constructor(props) {
             super(props);
             this.state = {
-                
+                counters: [this._newCounter()]
             }
         }
-  
+        
+        // You can't add a componenet directly to an array you want to display. You can however create a
+        // function that returns that component in a div like how _newCounter() returns a div wrapped <Counter/>
+        // this can then be added to your state function
+        _newCounter() {
+            return(
+                <div>
+                    <Counter/>
+                </div>
+            )
+        }
+
+        // This function tells the "Add Counter" button what to do once clicked.
+        handleClick() {
+            // newCounters creates an array with teh current state, and adds a newCounter to it.
+            const newCounters = [this.state.counters, this._newCounter()]
+            // Then run this.setState to reset the state to the newCounters, which is the original array + the newCounter you're adding.
+            this.setState({counters: newCounters})
+        }
+
         render() {
             return (
-                <Counter/>
+                <div>
+                  {this.state.counters}
+                  <button className='add_counter' onClick={() =>this.handleClick()}>Add Counter</button>  
+                </div>
                 )
             }
   }
